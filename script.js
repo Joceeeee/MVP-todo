@@ -195,7 +195,7 @@ function showActiveTasks() {
             // Set the display property to "none"
             element.style.display = "none";
         } else {
-            element.style.display = "block";
+            task[i].style.display = "block";
         }
     }
 }
@@ -207,7 +207,7 @@ function showCompletedTasks() {
             var element = tasks[i]
             element.style.display = "block";
         } else {
-            element.style.display = "none";
+            task[i].style.display = "none";
         }
     }
 }
