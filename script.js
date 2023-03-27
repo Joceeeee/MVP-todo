@@ -6,7 +6,7 @@ let templateElement = document.getElementById("list-item-template");
 let template = templateElement.innerHTML;
 var showActiveButton = document.getElementById("show-active");
 var showAllButton = document.getElementById("show-all");
-var showCompletedButton = doument.getElementById("show-completed")
+var showCompletedButton = doument.getElementById("show-completed");
 
 
 /* Locate where <script> tag which contains our template  */
