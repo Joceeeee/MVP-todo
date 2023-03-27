@@ -166,7 +166,17 @@ function onTodolistClicked(event) {
 
 function showActiveTasks() {
     var tasks = document.getElementsByClassName("task")
-    for(let i = 0; i < tasks.length; i++){}
+    for(let i = 0; i < tasks.length; i++){
+        if(tasks[i].classlist.contains("completed")){
+            // Get the element you want to hide
+            var element = tasks[i]
+
+            // Set the display property to "none"
+            element.style.display = "none";
+        } else {
+            tasks[i].style.display = "block";
+        }
+    }
 }
 
 /* Step 3 make the event trigger our functions
