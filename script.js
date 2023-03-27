@@ -59,7 +59,7 @@ let addTaskButton = document.getElementById("add-task");
 let newTaskInput = document.getElementById("task-input");
 let todoListContainer = document.getElementById("todo-list");
 
-
+var showActiveButton = document.getElementById("show-active");
 
 
 
@@ -105,6 +105,8 @@ function onAddTaskClicked(event) {
     let taskName = newTaskInput.value;
     /* Now clear the text box */
     newTaskInput.value = "";
+
+
 
     /* We have a new 'task', lets insert this into our template. In our template
     we included a "string".  We used a HTML comment so the browser would show
@@ -162,8 +164,13 @@ function onTodolistClicked(event) {
     }
 }
 
+function showActiveTasks() {
+    var tasks = document.getElementsByClassName("task")
+    for(let i = 0; i < tasks.length; i++){}
+}
 
 /* Step 3 make the event trigger our functions
 -----------------------------------------------*/ 
 addTaskButton.addEventListener('click', onAddTaskClicked);
 todoListContainer.addEventListener('click', onTodolistClicked);
+showActiveButton.addEventListener('click',show)
