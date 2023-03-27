@@ -60,7 +60,8 @@ let newTaskInput = document.getElementById("task-input");
 let todoListContainer = document.getElementById("todo-list");
 
 var showActiveButton = document.getElementById("show-active");
-
+var showAllButton = document.getElementById("show-all");
+var showCompletedButton = doument.getElementById("show-completed")
 
 
 /* We have chosen to use a template in our HTML.  So this time we need two
@@ -88,6 +89,10 @@ let templateElement = document.getElementById("list-item-template");
 /* Lets get the template, which is just all the HTML beteen the <script> tag */
 let template = templateElement.innerHTML;
 
+function saveTasks(name, isCompleted){
+    localStorage.setItem(name, isCompleted);
+}
+
 /* So we have now found everything in the HTML document, now we just need to
 write the function to insert the new task into the DOm tree and link it so when
 the click even on the 'Add Task" button activate our function will execute */
@@ -108,6 +113,7 @@ function onAddTaskClicked(event) {
 
 
 
+
     /* We have a new 'task', lets insert this into our template. In our template
     we included a "string".  We used a HTML comment so the browser would show
     (render) the string.  The idea is to search for this string in the templae
@@ -117,7 +123,10 @@ function onAddTaskClicked(event) {
 
     /* So the HTML has been update, lets insert the HTML into the DOM tree */
     todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
+
+    saveTasks(taskName, false)
 }
+
 
 
 /* It would be be nice if instead of just having a tick-mark next to each task
@@ -162,10 +171,22 @@ function onTodolistClicked(event) {
     } else {
         targetElement.classList.remove("completed");
     }
+    var taskNameElement = targetElement.querySelector(".task-name")
+    var taskName = taskNameElement.innerText;
+
+    saveTasks(taskName, checkbox.checked)
 }
 
+
+function showAllTasks() {
+    var taks = document.getElementsByClassName('task');
+    for (let i = 0; i < tasks.length; i++){
+        tasks[i].style.display = "block";
+    }
+}
+    
 function showActiveTasks() {
-    var tasks = document.getElementsByClassName("task")
+    var tasks = document.getElementsByClassName("task");
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].classlist.contains("completed")){
             // Get the element you want to hide
@@ -174,7 +195,30 @@ function showActiveTasks() {
             // Set the display property to "none"
             element.style.display = "none";
         } else {
-            tasks[i].style.display = "block";
+            element.style.display = "block";
+        }
+    }
+}
+
+function showCompletedTasks() {
+    var tasks = document.getElementsByClassName('task');
+    for (let i = 0; i < tasks.length; i++){
+        if(tasks[i].classlist.contains("completed")){
+            var element = tasks[i]
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+}
+
+function renderTasks(){
+    for (i=0; i<localStorage.length; i++){
+        var taskName = localStorage.key(i);
+        var isCompleted = localStorage.getItem(taskName) == "true";
+        var taskHTML = template.replace("<-- TASK_NAME -->", taskName);
+        if (!isCompleted){
+            todoListContainer.insertAdjacentElement('afterbegin',taskHTML);
         }
     }
 }
@@ -183,4 +227,8 @@ function showActiveTasks() {
 -----------------------------------------------*/ 
 addTaskButton.addEventListener('click', onAddTaskClicked);
 todoListContainer.addEventListener('click', onTodolistClicked);
-showActiveButton.addEventListener('click',show)
+showActiveButton.addEventListener('click',showActiveTasks);
+showAllButton.addEventListerner('click', showAllTasks);
+showCompletedButton.addEventListener('click', showCompletedTasks);
+
+renderTasks()
