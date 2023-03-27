@@ -213,7 +213,7 @@ function showCompletedTasks() {
 }
 
 function renderTasks(){
-    for (i=0; i<localStorage.length; i++){
+    for (i = 0; i<localStorage.length; i++){
         var taskName = localStorage.key(i);
         var isCompleted = localStorage.getItem(taskName) == "true";
         var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
