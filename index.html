@@ -2,16 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>My Todo List</title>
-  <meta name="author" content="Jocelyn Siswanto">
-  <meta name="description" content="Use ToDo list app to explore and interact with the DOM">
-  <link rel="stylesheet" type="text/css" href="ccs/style.css">
+    <meta charset="UTF-8">
+    <title>My Todo List</title>
+    <meta name="author" content="Jocelyn Siswanto">
+    <meta name="description" content="Use To Do list app to explore and interact with the DOM">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-
 <body>
-  <h1>My Todo List</h1>
+<h1>My To Do List</h1>
   <form>
     <label>
       Task Name:
@@ -23,22 +22,22 @@
   </form>
 
     <ul id="todo-list">
-
+        
     </ul>
-  <button type="button" id="show-all">ALL</button>
-  <button type="button" id="show-active">Active</button>
-  <button type="button" id="show-completed">Completed</button>
+  <button type ="button" id="show-all">All</button>
+  <button type ="button" id="show-active">Active</button>
+  <button type ="button" id="show-completed">Completed</button>
 
-  <script type="text/template" id="list-item-template">
-    <li class="task">
-      <label>
-        <input class="checkbox" type="checkbox">
-          <span class="task-name"><!--Task_Name--></span>
+<script type="text/template" id="list-item-template">
+  <li class="task">
+    <label>
+      <input class="checkbox" type="checkbox">
+            <span class="task-name"><!--Task_Name--></span>
           </label>
-    </li>
-  </script>
+  </li>
+</script>
 
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 
 </html>
