@@ -14,7 +14,7 @@ var showCompletedButton = document.getElementById("show-completed");
 function onAddTaskClicked(event) {
     var taskName = newTaskInput.value;
     newTaskInput.value = "";
-    var taskHTML = template.replace("<!--Task_Name-->", taskName);
+    var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
     todoListContainer.insertAdjacentHTML('afterbegin', taskHTML);
 
     saveTasks(taskName, false);
@@ -74,7 +74,7 @@ function renderTasks(){
         var taskName = localStorage.key(i)
         var isCompleted = localStorage.getItem(taskName) == "true";
         console.log(template);
-        var taskHTML = template.replace("<!--Task_Name-->", taskName);
+        var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
         if(!isCompleted){
             todoListContainer.insertAdjacentHTML('afterbegin', taskHTML);
         }
